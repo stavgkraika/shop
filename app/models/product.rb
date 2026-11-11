@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   # Set max lenght to the description, price and title 
   validates :description, length: { maximum: 1000, too_long: "%{count} characters is the maximum aloud. "}
   validates :title, length: { maximum: 140, too_long: "%{count} characters is the maximum aloud. "}
-  validates :price, length: { maximum: 10 }
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
 
   # You can input more brands finish and condition here
   BRAND = %w{ Ferrari Opel Lenovo Fossil}
