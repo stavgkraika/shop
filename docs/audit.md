@@ -1,45 +1,50 @@
-Try to create a new user and login.
-Can you confirm that the user was created?
-Navigate to the homepage using the user you created. Try to erase products that were not created by the user.
-Is it impossible to edit and delete products that were not created by your user?
-Try to sell a product by creating an ad with the user created.
-Is it possible to create ads and sell a product using your user?
-Navigate to the homepage and try to edit the ad that you have created.
-Is it possible for you to edit your own ad?
-Try to create another new user, login and create at least two new ads.
-Can you confirm that the new user and the ads were created?
-Login in with the first user and check if the ads created by the second user are there.
-Can you confirm that the ads created by the second user are present?
-Navigate to the homepage with a user of your choice and try to delete an ad that you have created.
-Is it possible for you to delete your own ad?
-Navigate to the homepage with any user and try to check who is selling each product.
-Is it possible for you to see who is selling the products without opening the ad?
-Navigate to the homepage and try to find the cart icon.
-Can you confirm that the cart icon is present in the homepage?
-Try to add one item to the cart using the first user.
-Can you confirm that the item was added to the cart of the first user?
-Did the message "Added to your cart" appear on the screen when you added something to the cart?
-Can you confirm that the cart icon in the homepage shows the number "1", meaning that you have one product in the cart?
-Try to add four more items to the cart.
-Can you confirm that all the added items are present in the cart?
-Can you confirm that the cart icon in the homepage shows the number "5", meaning that you have five products in the cart?
-Try to open your cart and check if you can see how much you have to pay for all the products in your cart.
-Can you confirm that the cart displays the total of all the products in your cart?
-Try to open your cart and remove one item from it.
-Can you confirm that the product was removed from the cart and the message "Removed from your cart" appeared on the screen?
-Try to go to the cart and check the total.
-Can you confirm that the total was updated accordingly when you removed the item?
-Can you confirm that the cart item in the homepage was updated an shows the number "4", meaning that you have four products in the cart?
-Try to login with the second user and check if the cart is empty.
-Can you confirm that the cart is empty, and the cart from the first user was not carried to the second user?
-Try to logout and add items in the cart without any user. Now after you add items to the cart, login to one user of your choice.
-Can you confirm that the items that you added to the cart are present in the user cart?
-Try to add some items to the cart and then push the button Empty cart. After the message appears, confirm that you want to empty the cart.
-Did the message "Are you sure?" appeared on the screen for you to confirm the action?
-After the confirmation were you redirected to the homepage?
-Bonus
-+Can you confirm that the student created or added something new like a new brand or the category field?
-+Can you add a product to the cart without opening the ad?
-+If you add four products to the cart from the same seller, can you remove just one from the cart and keep the other three?
-+Did the student implement its own display and design?
-+Did the student implement a payment method?
+# Shop manual smoke-test checklist
+
+Use this checklist to record a manual audit run. Check an item only after verifying it in the running app.
+
+- **Tester:**
+- **Date:**
+- **Environment / branch:**
+
+## Accounts and listings
+
+- [ ] Register the first user and sign in. Confirm the account was created.
+- [ ] As the first user, try to edit or delete a listing created by another user. Confirm both actions are denied.
+- [ ] Create a product listing as the first user. Confirm it is saved.
+- [ ] Edit the first user's own listing. Confirm the changes are saved.
+- [ ] Register and sign in as a second user.
+- [ ] Create at least two listings as the second user. Confirm both are saved.
+- [ ] Sign in as the first user. Confirm the second user's listings are visible.
+- [ ] As a user, delete one of your own listings. Confirm it is deleted.
+- [ ] Browse listings and confirm the seller's name is shown for each product without opening its detail page.
+
+## Cart for a signed-in user
+
+- [ ] Confirm the cart icon is visible on the homepage.
+- [ ] As the first user, add one product to the cart. Confirm it appears in the cart and the message “Added to your cart” is shown.
+- [ ] Confirm the cart badge shows `1`.
+- [ ] Add four more products. Confirm all five items appear in the cart and the badge shows `5`.
+- [ ] Confirm the cart shows the correct total for all items.
+- [ ] Remove one item. Confirm it is removed and the message “Removed from your cart” is shown.
+- [ ] Confirm the total updates and the badge shows `4`.
+- [ ] Sign in as the second user. Confirm their cart is empty and the first user's cart remains separate.
+
+## Guest cart and empty cart
+
+- [ ] Sign out and add products as a guest. Confirm they appear in the guest cart.
+- [ ] Sign in as a user. Confirm the guest cart items are present in that user's cart.
+- [ ] Add products to the cart and choose **Empty Cart**. Confirm an “Are you sure?” prompt appears.
+- [ ] Confirm the empty-cart action. Confirm the cart is cleared and you are redirected to the homepage.
+
+## Bonus checks
+
+- [ ] Add a new brand or product category.
+- [ ] Add a product to the cart without opening its listing.
+- [ ] Add four products from the same seller, remove one, and confirm the other three remain.
+- [ ] Confirm the app has a custom design.
+- [ ] Confirm a payment method is implemented.
+
+## Notes
+
+- **Failed checks / details:**
+- **Follow-up work:**
