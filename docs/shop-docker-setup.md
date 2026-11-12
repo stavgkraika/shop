@@ -70,6 +70,13 @@ docker compose up
 
 Open [http://localhost:3000](http://localhost:3000). Keep the terminal open while using the app. Press `Ctrl+C` to stop the server.
 
+
+### 7. For running tests
+
+```bash
+docker compose run --rm --use-aliases test
+```
+
 ## Subsequent runs
 
 After the initial setup, start the app with:
