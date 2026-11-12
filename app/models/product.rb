@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
  
-  before_destroy :not_referenced_by_any_line_item
-  belongs_to :user, optional: true
+  belongs_to :user, optional: false
 
   mount_uploader :image, ImageUploader
   serialize :image, JSON # If you use SQLite, add this line
