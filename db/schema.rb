@@ -10,26 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2026_11_16_000100) do
-
-  create_table "cart_items", force: :cascade do |t|
-    t.integer "cart_id", null: false
-    t.integer "product_id", null: false
-    t.integer "quantity", default: 1, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["cart_id", "product_id"], name: "index_cart_items_on_cart_id_and_product_id", unique: true
-    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
-    t.index ["product_id"], name: "index_cart_items_on_product_id"
-    t.check_constraint "quantity > 0", name: "cart_items_quantity_positive"
-  end
-
-  create_table "carts", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_carts_on_user_id", unique: true
-  end
+ActiveRecord::Schema.define(version: 2026_11_12_163413) do
 
   create_table "products", force: :cascade do |t|
     t.string "brand"
@@ -38,11 +19,12 @@ ActiveRecord::Schema.define(version: 2026_11_16_000100) do
     t.string "condition"
     t.string "finish"
     t.string "title"
-    t.decimal "price", precision: 5, scale: 2, default: "0.0"
+    t.decimal "price", precision: 10, scale: 2, default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
-    t.integer "user_id"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,7 +40,5 @@ ActiveRecord::Schema.define(version: 2026_11_16_000100) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "cart_items", "carts", on_delete: :cascade
-  add_foreign_key "cart_items", "products", on_delete: :cascade
-  add_foreign_key "carts", "users", on_delete: :cascade
+  add_foreign_key "products", "users"
 end

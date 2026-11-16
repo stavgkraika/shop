@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   
   before_action :authenticate_user!, except: [:index, :show]
 
+  before_action :authorize_owner!, only: [:edit, :update, :destroy]
+
 
   # GET /products or /products.json
   def index
@@ -57,9 +59,20 @@ class ProductsController < ApplicationController
 
  # DELETE /products/1 or /products/1.json
 def destroy
+  if @product.destroy
+    redirect_to root_path, notice: "Product was successfully deleted."
+  else
+    redirect_to @product, alert: "Product could not be deleted."
+  end
 end
 
   private
+
+  def authorize_owner!
+  return if @product.user_id == current_user.id
+
+  redirect_to root_path, alert: "You can only manage your own products."
+end
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])

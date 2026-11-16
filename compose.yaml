@@ -8,6 +8,28 @@ services:
       - bundle_cache:/bundle
       - node_modules:/app/node_modules
 
+  test:
+    build: .
+    volumes:
+      - .:/app
+      - bundle_cache:/bundle
+      - node_modules:/app/node_modules
+    environment:
+      SELENIUM_REMOTE_URL: http://selenium:4444/wd/hub
+    depends_on:
+      selenium:
+        condition: service_healthy
+    command: bundle _2.2.12_ exec rails test:all
+
+  selenium:
+    image: selenium/standalone-chrome:4.1.4-20220427
+    shm_size: 2gb
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:4444/status >/dev/null || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
 volumes:
   bundle_cache:
   node_modules:
