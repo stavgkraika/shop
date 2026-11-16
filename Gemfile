@@ -42,8 +42,7 @@ gem 'devise', '~> 4.4'
 gem 'gravatar_image_tag', '~> 1.2'
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
-# Ruby 3 no longer bundles REXML, but the locked test driver still requires it.
-gem 'rexml'
+
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
